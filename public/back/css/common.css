@@ -91,10 +91,10 @@ a:active{
 .lt_main {
   height: 100%;
   width: 100%;
-  background-color: greenyellow;
-  padding-left: 180px;
+  background-color:#ffffff;
+  padding-left: 200px;
   transition: all 1s;
-
+  padding-top: 50px;
 }
 .lt_main.hidemenu {
   padding-left: 0px;
@@ -121,4 +121,17 @@ a:active{
   text-align: center;
   line-height: 50px;
   font-size: 20px;
+}
+.breadcrumb {
+  margin-top: 20px;
+}
+.echarts_1,
+.echarts_2 {
+  height: 400px;
+  width: 48%;
+}
+.table.table-bordered th,
+.table.table-bordered td {
+  vertical-align: middle;
+  text-align: center;
 }
