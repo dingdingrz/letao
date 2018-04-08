@@ -3,7 +3,7 @@
  */
 $(function(){
   var currentpage = 1;
-  var pageSize = 2
+  var pageSize = 5
   render();
 
   function render(){
@@ -22,7 +22,7 @@ $(function(){
         $("#paginator").bootstrapPaginator({
           bootstrapMajorVersion:3,
           currentpage:currentpage,
-          totalPages:Math.ceil(info.total/(info.size/5)),
+          totalPages:Math.ceil(info.total/info.size),
           onPageClicked:function(a,b,c,page){
             console.log(page);
             currentpage = page;
@@ -40,8 +40,15 @@ $(function(){
   })
 
   //给模态框进行校验
+
   $("#form").bootstrapValidator({
-    fileds:{
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+
+    fields:{
       categoryName:{
         validators:{
           notEmpty:{
@@ -53,6 +60,18 @@ $(function(){
   })
   $("#form").on("success.form.bv",function(e){
     e.preventDefault()
+    $.ajax({
+      url:'/category/addTopCategory',
+      type:'post',
+      data:$("#form").serialize(),
+      success:function(info){
+        if(info.success){
+          $("#addModel").modal("hide")
+          $("#form").data("bootstrapValidator").resetForm(true)
+          render()
+        }
+      }
+    })
   })
 
 })
