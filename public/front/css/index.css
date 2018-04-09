@@ -1,0 +1,32 @@
+.lt_nav {
+  padding: 10px;
+}
+.lt_nav ul {
+  overflow: hidden;
+}
+.lt_nav li {
+  float: left;
+  width: 33.3333333%;
+}
+.lt_product  {
+  /*overflow: hidden;*/
+  padding: 10px;
+}
+.lt_product li {
+  float: left;
+  width: 48%;
+  border: 1px solid #cccccc;
+  text-align: center;
+  margin-left: 2%;
+}
+.lt_product li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.lt_product .title{
+  font-size: 16px ;
+  color: #ffffff;
+  height: 30px;
+  line-height: 30px;
+}
