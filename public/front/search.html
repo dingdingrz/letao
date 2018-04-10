@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>乐淘云购</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="lib/fa/css/font-awesome.css">
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/search.css"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <a href="category.html" class="header-left"><i class="mui-icon mui-icon-back"></i></a>
+        <h3>搜索中心</h3>
+        <!--<a href="search.html" class="header-right"><i class="fa fa-search"></i></a>-->
+    </div>
+    <div class="main">
+        <div class="lt_search">
+            <input type="text" placeholder="请输入关键字"/>
+            <button class="mui-btn mui-btn-blue ">搜索</button>
+        </div>
+        <div class="title mui-clearfix">
+            <span class="mui-pull-left">搜索历史</span>
+            <a class="btn-empty mui-pull-right" href="javascript:;"><i class="fa fa-trash"></i>清空历史记录</a>
+        </div>
+        <div class="content">
+            <ul>
+                <!--刨个坑-->
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i><p>首页</p></a></li>
+            <li><a href="#"><i class="fa fa-home"></i><p>分类页</p></a></li>
+            <li><a href="#"><i class="fa fa-home"></i><p>购物车</p></a></li>
+            <li><a href="#"><i class="fa fa-home"></i><p>会员中心</p></a></li>
+        </ul>
+    </div>
+</div>
+<script src=lib/mui/js/mui.js></script>
+<script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/common.js"></script>
+<script src="js/search.js"></script>
+<script type="text/html" id="historyTpl">
+    {{each list v i}}
+    <li><a class="mui-pull-left" href="javascript:;">{{v}}</a><i class="btn_delete mui-pull-right mui-icon mui-icon-closeempty"></i></li>
+
+    {{/each}}
+</script>
+</body>
+</html>
