@@ -20,7 +20,7 @@ ul {
   width: 100%;
   max-width: 640px;
   min-width: 320px;
-  background-color: lightgoldenrodyellow;
+  background-color: #ffffff;
   margin: 0 auto;
   position: relative;
   padding-top: 45px;
@@ -99,4 +99,66 @@ ul {
   width: 100%;
   overflow: hidden;
   position: relative;
+}
+
+/*通用的搜索框*/
+.lt_search {
+  padding: 10px 10px;
+  position: relative;
+
+}
+.lt_search input {
+  height: 30px;
+  width: 100%;
+  border: 1px solid #007AFF;
+  font-size: 14px;
+}
+.lt_search button {
+  position: absolute;
+  height: 30px;
+  right: 10px;
+  top: 10px;
+}
+
+
+/*通用的产品列表*/
+.lt_product  {
+  /*overflow: hidden;*/
+  padding: 10px;
+}
+.lt_product li {
+  float: left;
+  width: 48%;
+  border: 1px solid #cccccc;
+  text-align: center;
+  margin-left: 2%;
+  margin-bottom: 10px;
+}
+.lt_product li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.lt_product .title{
+  font-size: 16px ;
+  color: #0f0f0f;
+  height: 30px;
+  line-height: 30px;
+}
+.mui-ellipsis-2 {
+  margin-bottom: 0;
+}
+.lt_product .price {
+  color: red;
+  font-size: 16px;
+}
+p {
+  margin-bottom: 0;
+  margin-top: 0;
+  height: 20px;
+  line-height: 20px;
+}
+.lt_product .oldprice {
+  text-decoration: line-through;
+  font-size: 16px;
 }

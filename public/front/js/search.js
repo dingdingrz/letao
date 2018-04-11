@@ -17,7 +17,7 @@ $(function(){
 
     // 点击搜索按钮获得值并持久化本地中
     $(".lt_search button").on("click",function(){
-        var key = +$(".lt_search input").val().trim();
+        var key = $(".lt_search input").val().trim();
         var newArr =getHistory();
         if(newArr.indexOf(key) !==-1){
             var index = newArr.indexOf(key);
@@ -30,6 +30,8 @@ $(function(){
         localStorage.setItem("searchList",JSON.stringify(newArr));
         render()
         $(".lt_search input").val("")
+        //return false
+        location.href = "searchlist.html?key="+key;
 
     })
     //删除全部按钮功能

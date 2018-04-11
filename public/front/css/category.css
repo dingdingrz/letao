@@ -49,10 +49,15 @@
 }
 .main_right li p {
     text-align: center;
+    /*height: 30px;*/
+    /*line-height: 30px;*/
 
 }
 .tips {
-    padding: 10px;
+
+    height: 30px;
+    line-height: 30px;
     color: #101010;
     font-size: 14px;
+    padding-left: 10px;
 }
