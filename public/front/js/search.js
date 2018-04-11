@@ -4,7 +4,7 @@
 $(function(){
 
     function getHistory(){
-        var history = localStorage.getItem("searchList")||[];
+        var history = localStorage.getItem("searchList")||"[]";
         var arr = JSON.parse(history);
         return arr
     }
@@ -35,9 +35,23 @@ $(function(){
     //删除全部按钮功能
     $(".btn-empty").click(function(){
         mui.confirm("是否清空历史","温馨提示", ["确认", "取消"],function(e){
-            console.log(e.index);
             if(e.index===0) {
+                localStorage.removeItem("searchList");
+                render()
+            }
+        })
+    })
 
+    //添加单个删除按钮功能
+    $(".content ul").on("click",".btn_delete",function(){
+        var index = $(this).data("index");
+        mui.confirm("是否要删除","温馨提示",["确认","取消"],function(e){
+            console.log(index);
+            if(e.index===0){
+                var arr = getHistory();
+                arr.splice(index, 1);
+                localStorage.setItem("searchList",JSON.stringify(arr))
+                render()
             }
         })
     })
