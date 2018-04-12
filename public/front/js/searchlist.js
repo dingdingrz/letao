@@ -2,6 +2,7 @@
  * Created by Administrator on 2018-04-11.
  */
 $(function(){
+  var currentPage = 1;
   var key = getSearch("key");
   $(".lt_search input").val(key);
   render()
@@ -36,10 +37,11 @@ $(function(){
     render()
   })
 
-  function render(){
-    $(".lt_product ul").html('<div class="loading"></div>')
+  function render(callback){
+    //var callback;
+    //$(".lt_product ul").html('<div class="loading"></div>')
     var params = {}
-      params.proNam=$(".lt_search input").val(),
+      params.proName=$(".lt_search input").val(),
       params.page=1;
       params.pageSize=100;
     var $current = $(".lt_title .current")
@@ -56,10 +58,36 @@ $(function(){
         type:'get',
         data:params,
         success:function(info){
-          $(".lt_product ul").html(template("productTmp",info))
+
+          callback && callback(info);
+
         }
       })
     },500)
 
   }
+
+
+  //配置下拉刷新
+  mui.init({
+    pullRefresh : {
+      container:".content",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+      down : {
+        style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+        color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+        height:'50px',//可选,默认50px.下拉刷新控件的高度,
+        range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+        offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+        auto: true,//可选,默认false.首次加载自动上拉刷新一次
+        callback :function(){
+            currentPage = 1;
+          render(function(info){
+            $(".lt_product ul").html(template("productTmp",info))
+            mui(".content").pullRefresh().enablePullupToRefresh();
+
+          })
+        }
+      }
+    }
+  });
 })

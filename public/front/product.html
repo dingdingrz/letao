@@ -16,7 +16,6 @@
   <div class="header">
     <a href="searchlist.html" class="header-left"><i class="mui-icon mui-icon-back"></i></a>
     <h3>搜索中心</h3>
-    <!--<a href="search.html" class="header-right"><i class="fa fa-search"></i></a>-->
 
   </div>
   <div class="main">
@@ -24,66 +23,16 @@
       <div class="mui-scroll">
         <!--这里放置真实显示的DOM内容-->
         <!--轮播图-->
-        <div class="mui-slider">
-          <div class="mui-slider-group mui-slider-loop">
-            <div class="mui-slider-item mui-slider-item-duplicate "><a href="#"><img src="images/banner6.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner2.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner3.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner4.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner5.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner6.png" /></a></div>
-            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner2.png" /></a></div>
-          </div>
-        </div>
-        <div class="product-detail">
-          <!--刨个坑-->
-          <p class="detail_title">匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮</p>
-          <div class="price">
-            价格:
-            <span class="now">&yen;499</span>
-            <span class="old">&yen;200</span>
-          </div>
-          <div class="size">
-            尺码
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-            <span>40</span>
-          </div>
-          <div class="num">
-            数量：
-            <div class="mui-numbox">
-              <!-- "-"按钮，点击可减小当前数值 -->
-              <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-              <input class="mui-numbox-input" type="number" />
-              <!-- "+"按钮，点击可增大当前数值 -->
-              <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
-            </div>
-            <span>剩余数量20双</span>
-          </div>
-          <div class="desc">
-            <p>详情：描述</p>
-          </div>
-        </div>
+        <!--挖了个大坑-->
       </div>
     </div>
 
   </div>
   <div class="footer">
-    <ul>
-      <li><a href="#" class="current"><i class="fa fa-home"></i><p>首页</p></a></li>
-      <li><a href="category.html"><i class="fa fa-home"></i><p>分类页</p></a></li>
-      <li><a href="#"><i class="fa fa-home"></i><p>购物车</p></a></li>
-      <li><a href="#"><i class="fa fa-home"></i><p>会员中心</p></a></li>
-    </ul>
+    <a href="javascript" class="mui-pull-left">去购物车</a>
+    <button class="mui-btn mui-btn-warning mui-pull-right">立即购买</button>
+    <button class="mui-btn mui-btn-danger mui-pull-right add_cart ">加入购物车</button>
+
   </div>
 </div>
 <script src=lib/mui/js/mui.js></script>
@@ -92,10 +41,55 @@
 <script src=js/common.js></script>
 <script src=js/product.js></script>
 <script type="text/html" id="productTpl">
-  {{each list v i }}
-  <p class="detail_title">{{v.proName}}</p>
-  <a href="">{{v.id}}</a>
-  {{/each}}
+  <div class="mui-slider">
+    <div class="mui-slider-group mui-slider-loop">
+      <div class="mui-slider-item mui-slider-item-duplicate ">
+        <a href="#"><img src="{{pic[pic.length-1].picAddr}}" /></a></div>
+      {{each pic v i }}
+      <div class="mui-slider-item"><a href="#"><img src="{{v.picAddr}}" /></a></div>
+      {{/each}}
+      <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{pic[0].picAddr}}" /></a></div>
+    </div>
+    <!--小圆圈-->
+    <!--<div class="mui-slider-indicator">-->
+      <!--{{each pic v i }}-->
+      <!--<div class="mui-indicator{{i ===0 ? 'mui-active':''}} "></div>-->
+      <!--{{/each}}-->
+    <!--</div>-->
+  </div>
+
+  <div class="product-detail">
+    <!--刨个坑-->
+    <p class="detail_title">{{proName}}</p>
+    <div class="price">
+      价格:
+      <span class="now">&yen;{{price}}</span>
+      <span class="old">&yen;{{oldPrice}}</span>
+    </div>
+    <div class="size">
+      尺码
+      <%
+        var arr = size.split("-")
+        var start = arr[0]
+        var end = arr[1]
+      for (var i = start ; i <= end;i++){
+      %>
+      <span>{{i}}</span>
+      <% } %>
+    </div>
+    <div class="num">
+      数量：
+      <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{num}}'>
+        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+        <input class="mui-numbox-input" type="number" />
+        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+      </div>
+      <span>剩余数量{{num}}双</span>
+    </div>
+    <div class="desc">
+      <p>{{proDesc}}</p>
+    </div>
+  </div>
 </script>
 
 </body>
