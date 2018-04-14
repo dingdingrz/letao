@@ -5,7 +5,37 @@ $(function(){
   var currentPage = 1;
   var key = getSearch("key");
   $(".lt_search input").val(key);
-  render()
+  mui.init({
+    pullRefresh : {
+      container:".content",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+      down : {
+
+        auto: true,//可选,默认false.首次加载自动上拉刷新一次
+        callback :function(){
+          currentPage = 1;
+          render(function(info){
+            $(".lt_product ul").html(template("productTmp",info));
+            mui(".content").pullRefresh().endPulldownToRefresh();
+            mui(".content").pullRefresh().enablePullupToRefresh();
+          })
+        }
+      },
+      up:{
+        callback:function(){
+          currentPage++;
+          render(function(info){
+            if(info.data.length>0){
+              $(".lt_product ul").append(template("productTmp",info));
+              mui(".content").pullRefresh().endPulldownToRefresh()
+            }else{
+              mui(".content").pullRefresh().endPullupToRefresh(true)
+            }
+          })
+        }
+      }
+    }
+
+  });
 
 
 //按钮搜索进行渲染
